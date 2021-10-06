@@ -5,22 +5,35 @@ import Header from './components/Header';
 import List from './components/List';
 
 function App() {
-  const [contacts, setContacts] = useState([])
+	const STORAGE_KEY = 'contacts';
+	const [contacts, setContacts] = useState([]);
 
-  const handleAddContact = (contact) => {
-    console.log(contact)
-    setContacts([...contacts, contact])
-  }
-  
+	useEffect(() => {
+		// get contacts when refreshing the page hence the empty dependency
+    // convert data from string to object and sets it as the state (contacts)
+		const getContacts = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if(getContacts) {
+      setContacts(getContacts);
+    }
+	}, []);
 
+  useEffect(() => {
+			// localStorage only read strings hence JSON.stringify
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(contacts));
+		}, [contacts]);
 
-  return (
-    <div className="ui container">
-      <Header />
-      <Add handleAddContact={handleAddContact} />
-      <List contacts={contacts} />
-    </div>
-  );
+	const handleAddContact = (contact) => {
+		console.log(contact);
+		setContacts([...contacts, contact]);
+	};
+
+	return (
+		<div className='ui container'>
+			<Header />
+			<Add handleAddContact={handleAddContact} />
+			<List contacts={contacts} />
+		</div>
+	);
 }
 
 export default App;
