@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import Add from './components/Add';
 import Header from './components/Header';
 import List from './components/List';
@@ -24,7 +25,8 @@ function App() {
 
 	const handleAddContact = (contact) => {
 		console.log(contact);
-		setContacts([...contacts, contact]);
+    // use the uuid v4 package to generade uniquie IDs
+		setContacts([...contacts, { id: uuidv4(), ...contact }]);
 	};
 
 	return (
