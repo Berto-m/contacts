@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 
-export default function Add() {
+export default function Add(props) {
 	// state to manage users' name and email
 	const [info, setInfo] = useState({ name: '', email: '' });
 
@@ -19,8 +19,16 @@ export default function Add() {
   // prevents page from page from reshesing after every submit
 	const onSubmitForm = (event) => {
 		event.preventDefault();
-    console.log(info)
+
+		// sends data to its parent (app.js) for rendering.
+		props.handleAddContact(info);
+
+		// clear input fields 
+		setInfo({name: '', email: ''});
 	};
+
+
+	
 
 	return (
 		<div className='ui main'>
