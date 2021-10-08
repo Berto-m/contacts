@@ -21,3 +21,8 @@ i.icon {
   font-size: 20px;
   cursor: pointer;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}

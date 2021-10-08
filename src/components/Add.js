@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 
 
 export default function Add(props) {
-	// state to manage users' name and email
+	// state to manage contacts' name and email
 	const [info, setInfo] = useState({ name: '', email: '' });
 
-	// tracks user's name and syncs it with state
+	// tracks contacts name and email and syncs it with state
 	const handleChangeName = (event) => {
     console.log(event.target.value);
 		setInfo({
@@ -13,7 +13,6 @@ export default function Add(props) {
 			[event.target.name]: event.target.value,
 		});
 	};
-
 
   // prevents page from page from reshesing after every submit
 	const onSubmitForm = (event) => {
@@ -24,10 +23,11 @@ export default function Add(props) {
 
 		// clear input fields 
 		setInfo({name: '', email: ''});
+
+		// redirects user to the list page where all the contacts are
+		props.history.push('/')
 	};
 
-
-	
 
 	return (
 		<div className='ui main'>
