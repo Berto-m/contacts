@@ -29,11 +29,20 @@ function App() {
 		setContacts([...contacts, { id: uuidv4(), ...contact }]);
 	};
 
+  // deletes contacts from the list
+  const handleRemoveContact = (id) => {
+    const newContacts = contacts.filter(contact => {
+      return contact.id !== id;
+    })
+    setContacts(newContacts)
+  }
+  
+
 	return (
 		<div className='ui container'>
 			<Header />
 			<Add handleAddContact={handleAddContact} />
-			<List contacts={contacts} />
+			<List contacts={contacts} getContactID={handleRemoveContact} />
 		</div>
 	);
 }

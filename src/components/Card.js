@@ -2,8 +2,8 @@ import React from 'react'
 import user from '../images/user.png'
 
 export default function Card(props) {
-  // creates contact layout 
 
+  // creates contact layout 
   const {id, name, email} = props.contact
   return (
 			<div className='item'>
@@ -13,7 +13,8 @@ export default function Card(props) {
 					<div>{email}</div>
 				</div>
 				<i className='trash alternate outline icon'
-        style={{color:'red', marginTop: '7px'}}></i>
+        style={{color:'red', marginTop: '7px'}}
+				onClick={() => props.handleClick(id)} ></i>
 			</div>
 		);
 }

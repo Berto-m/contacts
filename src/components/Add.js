@@ -15,7 +15,6 @@ export default function Add(props) {
 	};
 
 
-
   // prevents page from page from reshesing after every submit
 	const onSubmitForm = (event) => {
 		event.preventDefault();
