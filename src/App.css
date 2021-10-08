@@ -22,6 +22,10 @@ i.icon {
   cursor: pointer;
 }
 
+.center-div {
+  text-align: center;
+}
+
 .flex {
   display: flex;
   justify-content: space-between;

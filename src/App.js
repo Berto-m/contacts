@@ -5,6 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Add from './components/Add';
 import Header from './components/Header';
 import List from './components/List';
+import Details from './components/Details';
+
 
 function App() {
 	const STORAGE_KEY = 'contacts';
@@ -61,7 +63,8 @@ function App() {
 						path='/add'
 						render={(props) => <Add {...props} handleAddContact={handleAddContact} />}
 					/>
-				</Switch>
+					<Route exact path='/contact/:id' render={(props) => <Details {...props} />} /> 
+				</Switch> 
 			</BrowserRouter>
 		</div>
 	);
