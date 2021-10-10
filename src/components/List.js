@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 
 export default function List(props) {
+	console.log(props)
 	const handleDeleteContact = (id) => {
 		props.getContactID(id);
 	};
@@ -18,7 +19,7 @@ export default function List(props) {
 		<div className='main'>
 			<div className='flex'>
 				<h3>Contact List</h3>
-				{/* needed to take users to the add page when the button is clicked */}
+				{/* Takes users to the add page when the button is clicked */}
 				<Link to='/add'>
 					<button className='ui button green'>Add Contact</button>
 				</Link>
