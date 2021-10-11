@@ -22,7 +22,7 @@ export default function Edit(props) {
 		// sends data to its parent (app.js) for rendering.
 		props.handleUpdateContact(info);
 
-		// clear input fields
+		// clear input fields after submit update
 		setInfo({ name: '', email: '' });
 
 		// redirects user to the list page where all the contacts are

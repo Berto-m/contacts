@@ -34,7 +34,7 @@ function App() {
 			id: uuidv4(),
 			...contact,
 		};
-		// Saves contact info into the JSON server
+		// Saves contact information into the JSON server
 		const response = await api.post('/contacts', resquest);
 		setContacts([...contacts, response.data]);
 	};
@@ -49,8 +49,9 @@ function App() {
 		);
 	};
 
-	// deletes contacts from the list
-	const handleRemoveContact = (id) => {
+	// deletes contacts from the json server
+	const handleRemoveContact = async (id) => {
+		await api.delete(`/contacts/${id}`);
 		const newContacts = contacts.filter((contact) => {
 			return contact.id !== id;
 		});

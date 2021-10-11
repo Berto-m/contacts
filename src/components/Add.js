@@ -21,7 +21,7 @@ export default function Add(props) {
 		// sends data to its parent (app.js) for rendering.
 		props.handleAddContact(info);
 
-		// clear input fields 
+		// clear input fields after submit
 		setInfo({name: '', email: ''});
 
 		// redirects user to the list page where all the contacts are
