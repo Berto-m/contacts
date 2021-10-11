@@ -11,6 +11,9 @@ import Edit from './components/Edit';
 
 function App() {
 	const [contacts, setContacts] = useState([]);
+	const [search, setSearch] = useState('');
+	const [searchResult, setSearchResult] = useState([]);
+
 	//outside the effect for reusability
 	const getContacts = async () => {
 		const response = await api.get('/contacts');
@@ -39,7 +42,9 @@ function App() {
 		setContacts([...contacts, response.data]);
 	};
 
+	//
 	const handleUpdateContact = async (contact) => {
+		// the contact is the body of the put request.
 		const response = await api.put(`/contacts/${contact.id}`, contact);
 		const { id } = response.data;
 		setContacts(
@@ -58,6 +63,23 @@ function App() {
 		setContacts(newContacts);
 	};
 
+	const handleSearch = (searchValue) => {
+		setSearch(searchValue);
+		if (search !== '') {
+			// object values returns an array of the contacts values
+			//inclues checks if the string searchValue value in the array
+			const filteredContacts = contacts.filter((contact) => {
+				return Object.values(contact)
+					.join(' ')
+					.toLowerCase()
+					.includes(searchValue.toLowerCase());
+			});
+			setSearchResult(filteredContacts);
+		} else {
+			setSearchResult(contacts);
+		}
+	};
+
 	return (
 		<div className='ui container'>
 			<BrowserRouter>
@@ -71,8 +93,12 @@ function App() {
 						render={(props) => (
 							<List
 								{...props}
-								contacts={contacts}
+								// if search is empty it means that I am not typing anything
+								// then pass
+								contacts={search.length < 1 ? contacts : searchResult}
 								getContactID={handleRemoveContact}
+								search={search}
+								handleSearch={handleSearch}
 							/>
 						)}
 					/>

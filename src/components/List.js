@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Card from './Card';
 
 export default function List(props) {
-	console.log(props)
 	const handleDeleteContact = (id) => {
 		props.getContactID(id);
 	};
@@ -15,6 +14,10 @@ export default function List(props) {
 		);
 	});
 
+	const onChangeSearch = (event) => {
+		props.handleSearch(event.target.value);
+	};
+
 	return (
 		<div className='main'>
 			<div className='flex'>
@@ -23,6 +26,18 @@ export default function List(props) {
 				<Link to='/add'>
 					<button className='ui button green'>Add Contact</button>
 				</Link>
+			</div>
+			<div className='ui search'>
+				<div className='ui icon input'>
+					<input
+						className='prompt'
+						type='text'
+						placeholder='Search'
+						value={props.search}
+						onChange={onChangeSearch}
+					/>
+					<i className='search icon'></i>
+				</div>
 			</div>
 			<div className='ui celled list'>{renderedContacts}</div>
 		</div>

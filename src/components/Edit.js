@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 export default function Edit(props) {
-	// state to manage contacts' name and email
 	const {id, name, email} = props.location.state.contact
 	console.log(props)
+	// initialise states with the data that got passed through props.
 	const [info, setInfo] = useState({ id, name, email });
 
 	// tracks contacts name and email and syncs it with state
