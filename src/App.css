@@ -1,10 +1,10 @@
 .main {
-	margin-top: 5em;
+  margin-top: 5em;
 }
 
 .center {
-	justify-content: center;
-	padding: 10px;
+  justify-content: center;
+  padding: 10px;
 }
 
 .ui.icon.input {
@@ -12,23 +12,21 @@
   margin-top: 10px;
 }
 
-
 .item {
-	padding: 15px 0px !important;
+  padding: 15px 0px !important;
 }
 
 i.icon {
-	float: right;
-	font-size: 20px;
-	cursor: pointer;
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .center-div {
-	text-align: center;
+  text-align: center;
 }
 
 .flex {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-

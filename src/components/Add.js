@@ -1,62 +1,60 @@
-import React, { useState } from 'react'
-
+import React, { useState } from 'react';
 
 export default function Add(props) {
-	// state to manage contacts' name and email
-	const [info, setInfo] = useState({ name: '', email: '' });
+  // state to manage contacts' name and email
+  const [info, setInfo] = useState({ name: '', email: '' });
 
-	// tracks contacts name and email and syncs it with state
-	const handleChangeName = (event) => {
+  // tracks contacts name and email and syncs it with state
+  const handleChangeName = (event) => {
     console.log(event.target.value);
-		setInfo({
-			...info,
-			[event.target.name]: event.target.value,
-		});
-	};
+    setInfo({
+      ...info,
+      [event.target.name]: event.target.value,
+    });
+  };
 
   // prevents page from page from reshesing after every submit
-	const onSubmitForm = (event) => {
-		event.preventDefault();
+  const onSubmitForm = (event) => {
+    event.preventDefault();
 
-		// sends data to its parent (app.js) for rendering.
-		props.handleAddContact(info);
+    // sends data to its parent (app.js) for rendering.
+    props.handleAddContact(info);
 
-		// clear input fields after submit
-		setInfo({name: '', email: ''});
+    // clear input fields after submit
+    setInfo({ name: '', email: '' });
 
-		// redirects user to the list page where all the contacts are
-		props.history.push('/')
-	};
+    // redirects user to the list page where all the contacts are
+    props.history.push('/');
+  };
 
-
-	return (
-		<div className='ui main'>
-			<h3>Add Contact</h3>
-			<form className='ui form' onSubmit={onSubmitForm}>
-				<div className='field'>
-					<label>Name</label>
-					<input
-						type='text'
-						name='name'
-						placeholder='Name'
+  return (
+    <div className='ui main'>
+      <h3>Add Contact</h3>
+      <form className='ui form' onSubmit={onSubmitForm}>
+        <div className='field'>
+          <label>Name</label>
+          <input
+            type='text'
+            name='name'
+            placeholder='Name'
             required
-						value={info.name}
-						onChange={handleChangeName}
-					/>
-				</div>
-				<div className='field'>
-					<label>Email</label>
-					<input
-						type='text'
-						name='email'
+            value={info.name}
+            onChange={handleChangeName}
+          />
+        </div>
+        <div className='field'>
+          <label>Email</label>
+          <input
+            type='text'
+            name='email'
             required
-						placeholder='Email'
-						value={info.email}
-						onChange={handleChangeName}
-					/>
-				</div>
-				<button className='ui button green'>Add</button>
-			</form>
-		</div>
-	);
+            placeholder='Email'
+            value={info.email}
+            onChange={handleChangeName}
+          />
+        </div>
+        <button className='ui button green'>Add</button>
+      </form>
+    </div>
+  );
 }
