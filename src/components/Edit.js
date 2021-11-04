@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 
-export default function Add(props) {
-  // state to manage contacts' name and email
-  const [info, setInfo] = useState({ name: '', email: '' });
+export default function Edit(props) {
+  const { id, name, email } = props.location.state.contact;
+  console.log(props);
+  // initialise states with the data that got passed through props.
+  const [info, setInfo] = useState({ id, name, email });
 
   // tracks contacts name and email and syncs it with state
   const handleChangeName = (event) => {
@@ -14,13 +16,13 @@ export default function Add(props) {
   };
 
   // prevents page from page from reshesing after every submit
-  const onSubmitForm = (event) => {
+  const onSubmitUpdate = (event) => {
     event.preventDefault();
 
     // sends data to its parent (app.js) for rendering.
-    props.handleAddContact(info);
+    props.handleUpdateContact(info);
 
-    // clear input fields after submit
+    // clear input fields after submit update
     setInfo({ name: '', email: '' });
 
     // redirects user to the list page where all the contacts are
@@ -29,8 +31,8 @@ export default function Add(props) {
 
   return (
     <div className='ui main'>
-      <h3>Add Contact</h3>
-      <form className='ui form' onSubmit={onSubmitForm}>
+      <h3>Update Contact</h3>
+      <form className='ui form' onSubmit={onSubmitUpdate}>
         <div className='field'>
           <label>Name</label>
           <input
@@ -53,7 +55,7 @@ export default function Add(props) {
             onChange={handleChangeName}
           />
         </div>
-        <button className='ui button green'>Add</button>
+        <button className='ui button green'>Update</button>
       </form>
     </div>
   );
