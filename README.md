@@ -1,6 +1,6 @@
 # Contacts List
 
-This is a simple contacts lists built with React and Semantic UI that performs all CRUD operations on a JSON server which is basically a fake REST api. 
+This is a simple contacts lists built with React and Semantic UI. It performs all CRUD operations on a JSON server which is basically a fake REST api. 
 
 ### How to run :) 
 - Clone [contacts-json-server](https://github.com/Berto-m/contacts-json-server)repo
